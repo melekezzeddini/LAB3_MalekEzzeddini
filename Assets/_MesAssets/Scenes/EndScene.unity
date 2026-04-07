@@ -375,7 +375,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2095332540}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIStart, Assembly-CSharp
         m_MethodName: OnCloseClick
         m_Mode: 1
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 154918276}
   - component: {fileID: 154918278}
   m_Layer: 0
-  m_Name: TitleImage
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -154.57251}
+  m_AnchoredPosition: {x: 0, y: -199}
   m_SizeDelta: {x: 793.8679, y: 309.14502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &154918276
@@ -491,14 +491,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.8708714, b: 0.105882354, a: 1}
+  m_Color: {r: 0.5283019, g: 0.19686721, b: 0.19686721, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 280c8a020a29ece4ea01e8025ec5f482, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 928a8560b885eef4eb6f10a45ebdd1e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -878,7 +878,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2095332540}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIStart, Assembly-CSharp
         m_MethodName: OnExitClick
         m_Mode: 1
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2095332540}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIStart, Assembly-CSharp
         m_MethodName: OnInstructionsClick
         m_Mode: 1
@@ -1749,7 +1749,7 @@ GameObject:
   - component: {fileID: 1019690918}
   - component: {fileID: 1019690917}
   m_Layer: 0
-  m_Name: ButtonPlay
+  m_Name: ButtonRestart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1819,7 +1819,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2095332540}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIStart, Assembly-CSharp
         m_MethodName: OnStartClick
         m_Mode: 1
@@ -2331,7 +2331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.05833925, g: 0.13496897, b: 0.6509434, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2695,7 +2695,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2095332540}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIStart, Assembly-CSharp
         m_MethodName: OnExitClick
         m_Mode: 1
@@ -2980,9 +2980,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2095332539}
-  - component: {fileID: 2095332540}
   m_Layer: 0
-  m_Name: UIStart
+  m_Name: UIEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3004,22 +3003,6 @@ Transform:
   - {fileID: 901254009}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2095332540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2095332538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c631f5e3c0c2ff74cba40c100ac096d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _InstructionsPanel: {fileID: 1302218815}
-  _gameButtons: {fileID: 1602319577}
-  _ButtonStart: {fileID: 1019690917}
-  _ButtonClose: {fileID: 114990188}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

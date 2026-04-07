@@ -1,8 +1,15 @@
 using UnityEngine;
 using System.Collections;
-
+using System;
 public class CollisionManager : MonoBehaviour
 {
+    public static event EventHandler<OnCollisionOccuredEventArgs> OnCollisionOccured; 
+
+    public class OnCollisionOccuredEventArgs : EventArgs
+    {
+        public int collisionValue; // c est un event args nomme collisionValue 
+    }
+
     [SerializeField] private Material _hitMaterial = default(Material);
     [SerializeField] private int _collisionValue = 1;
     [SerializeField] private float _resetTimer = 4f; // Temps avant r�initialisation
@@ -54,7 +61,10 @@ public class CollisionManager : MonoBehaviour
                 }
             }
 
-            GameManager.Instance.AddCollision(_collisionValue);
+            OnCollisionOccured?.Invoke(this, new OnCollisionOccuredEventArgs
+            {
+                collisionValue = _collisionValue
+            }); ;
 
             _isHit = true;
 

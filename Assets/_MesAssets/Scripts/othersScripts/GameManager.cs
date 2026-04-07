@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     // Singleton
     public static GameManager Instance;
 
+
     private void Awake()
     {
         if (Instance == null)
@@ -16,12 +17,28 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        CollisionManager.OnCollisionOccured += CollisionManager_OnCollisionOccured;
+    }
+
+    private void OnDestroy()
+    {
+        CollisionManager.OnCollisionOccured -= CollisionManager_OnCollisionOccured;
+    }
+
+    private void CollisionManager_OnCollisionOccured(object sender, CollisionManager.OnCollisionOccuredEventArgs e)
+    {
+
+        _nbCollisions += e.collisionValue;
     }
 
     // Attributs
+    private float _startTime;
+    public float StartTime => _startTime;
     private float _offsetTime;
     private bool _isStarted;
     private int _nbCollisions;
+    public int NbCollisions => _nbCollisions;
 
     private float _timeZone1;
     private float _timeZone2;
@@ -29,7 +46,6 @@ public class GameManager : MonoBehaviour
 
     public float offsetTime => _offsetTime;
     public bool IsStarted => _isStarted;
-    public int NbCollisions => _nbCollisions;
 
     // Initialisation
     void Start()
@@ -38,14 +54,12 @@ public class GameManager : MonoBehaviour
         _offsetTime = 0;
         _isStarted = false;
         _nbCollisions = 0;
+        _startTime= Time.time;
 
     }
 
     // Méthodes
-    public void AddCollision(int p_value)
-    {
-        _nbCollisions += p_value;
-    }
+   
 
     public void SetTimer()
     {
@@ -85,5 +99,9 @@ public class GameManager : MonoBehaviour
     public float GetTotalTime()
     {
         return _timeZone1 + _timeZone2 + _timeZone3;
+    }
+    public void AddCollision(int p_value)
+    {
+        _nbCollisions += p_value;
     }
 }
