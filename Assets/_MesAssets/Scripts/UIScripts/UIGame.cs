@@ -1,12 +1,17 @@
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 
 public class UIGame : MonoBehaviour
 {
     public static UIGame Instance;
     [SerializeField] private TextMeshProUGUI    _txtTime;
     [SerializeField] private TextMeshProUGUI    _txtCollisions;
+    [SerializeField] private GameObject _pausePanel;
+    [SerializeField] private Button _continueButton ;
 
 
     private void Awake()
@@ -25,13 +30,25 @@ public class UIGame : MonoBehaviour
     }
     private void Start()
     {
+        Time.timeScale = 1.0f; 
+        _pausePanel.SetActive(false);
         CollisionManager.OnCollisionOccured += CollisionManager_OnCollisionOccured;
+        Player_NewInputSystem.OnPlayerPaused += Player_NewInputSystem_OnPlayerPaused;
         CollisionDisplayUI();
+
     }
+
 
     private void OnDestroy()
     {
         CollisionManager.OnCollisionOccured -= CollisionManager_OnCollisionOccured;
+        Player_NewInputSystem.OnPlayerPaused -= Player_NewInputSystem_OnPlayerPaused;
+
+    }
+    private void Player_NewInputSystem_OnPlayerPaused(object sender, System.EventArgs e)
+    {
+        _pausePanel.SetActive(!_pausePanel.activeSelf);
+        EventSystem.current.SetSelectedGameObject(_continueButton.gameObject);
     }
     private void Update()
     {
@@ -65,4 +82,29 @@ public class UIGame : MonoBehaviour
     {
         CollisionDisplayUI();
     }
+    public void OnExitClick()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif 
+
+    }
+
+    public void OnRestartClick()
+    {
+        SceneManager.LoadScene(0);
+
+    }
+
+    public void OnContinueClick()
+    {
+
+
+    }
+
+
+
+
 }

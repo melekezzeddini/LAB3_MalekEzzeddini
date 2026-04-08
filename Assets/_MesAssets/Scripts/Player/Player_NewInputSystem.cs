@@ -1,7 +1,10 @@
 using UnityEngine;
-
+using System;
 public class Player_NewInputSystem : MonoBehaviour
 {
+
+    public static event EventHandler OnPlayerPaused;
+
     [SerializeField] private float _playerSpeed = 500f;
     [SerializeField] private float _playerRotationSpeed = 500f;
     [SerializeField] private float jumpForce = 10f;
@@ -19,10 +22,17 @@ public class Player_NewInputSystem : MonoBehaviour
     private void Start()
     {
         _animator = GetComponentInChildren<Animator>();
+        _rb = GetComponent<Rigidbody>();
 
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
-        _rb = GetComponent<Rigidbody>();
+        _playerInputActions.Player.Pause.performed += Pause_performed;
+    }
+
+    private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnPlayerPaused?.Invoke(this, EventArgs.Empty);
+            
     }
 
     private void FixedUpdate()

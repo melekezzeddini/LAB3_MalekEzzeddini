@@ -11,6 +11,21 @@ public class UIStart : MonoBehaviour
     [SerializeField] private Button _ButtonStart;
     [SerializeField] private Button _ButtonClose;
 
+    private void Awake()
+    {
+        GameManager gameManager =FindAnyObjectByType<GameManager>();
+        if (gameManager != null)
+        {
+            Destroy(gameManager.gameObject );
+        }
+
+        UIGame uigame = FindAnyObjectByType<UIGame>();
+        if (uigame != null)
+        {
+            Destroy(uigame.gameObject);
+        }
+    }
+
     public void Start()
     {
         EventSystem.current.SetSelectedGameObject(_ButtonStart.gameObject);

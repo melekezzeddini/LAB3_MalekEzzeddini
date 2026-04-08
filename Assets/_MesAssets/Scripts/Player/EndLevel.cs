@@ -8,20 +8,16 @@ public class EndLevel : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            int noScene = SceneManager.GetActiveScene().buildIndex; 
+            int noScene = SceneManager.GetActiveScene().buildIndex;
 
-            GameManager.Instance.StopTimer(noScene);
 
-            if (noScene >= SceneManager.sceneCountInBuildSettings - 2)
+            if (noScene < SceneManager.sceneCountInBuildSettings - 2)
             {
-                collision.gameObject.GetComponent<Player_NewInputSystem>().DisableInputActions();
-
-               
-
                 SceneManager.LoadScene(noScene + 1);
             }
             else
             {
+                collision.gameObject.GetComponent<Player_NewInputSystem>().DisableInputActions();
                 GameManager.Instance.EndTime = Time.time - GameManager.Instance.StartTime;
                 SceneManager.LoadScene(noScene + 1);
             }

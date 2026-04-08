@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -55,6 +56,9 @@ public class GameManager : MonoBehaviour
     public bool IsStarted => _isStarted;
 
     // Initialisation
+
+    private bool _isPaused = false;
+
     void Start()
     {
         
@@ -62,11 +66,27 @@ public class GameManager : MonoBehaviour
         _isStarted = false;
         _nbCollisions = 0;
         _startTime= Time.time;
+        _isPaused = false;
+        Player_NewInputSystem.OnPlayerPaused += Player_NewInputSystem_OnPlayerPaused;
 
     }
 
+    private void Player_NewInputSystem_OnPlayerPaused(object sender, EventArgs e)
+    {
+        if (_isPaused)
+        {
+            Time.timeScale = 1.0f;
+            _isPaused= false;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            _isPaused = true;
+        }
+    }
+
     // Méthodes
-   
+
 
     public void SetTimer()
     {
@@ -74,39 +94,7 @@ public class GameManager : MonoBehaviour
         _isStarted = true;
     }
 
-    public void StopTimer(int level)
-    {
-        switch (level)
-        {
-            case (0):
-                _timeZone1 = Time.time - _offsetTime;
-                break;
-            case (1):
-                _timeZone2 = Time.time - _offsetTime;
-                break;
-            case (2):
-                _timeZone3= Time.time - _offsetTime;
-                break;
-        }
-        _isStarted = false;
-    }
-
-    public float GetTimeZone(int level)
-    {
-        switch (level)
-        {
-            case 0: return _timeZone1;
-            case 1: return _timeZone2;
-            case 2: return _timeZone3;
-        }
-
-        return 0;
-    }
-
-    public float GetTotalTime()
-    {
-        return _timeZone1 + _timeZone2 + _timeZone3;
-    }
+   
     public void AddCollision(int p_value)
     {
         _nbCollisions += p_value;
