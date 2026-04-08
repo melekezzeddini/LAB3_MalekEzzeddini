@@ -5,8 +5,8 @@ public class Player_NewInputSystem : MonoBehaviour
 
     public static event EventHandler OnPlayerPaused;
 
-    [SerializeField] private float _playerSpeed = 500f;
-    [SerializeField] private float _playerRotationSpeed = 500f;
+    [SerializeField] private float _playerSpeed = 2000f;
+    [SerializeField] private float _playerRotationSpeed = 700f;
     [SerializeField] private float jumpForce = 10f;
 
     private bool isGrounded = true;
@@ -19,6 +19,8 @@ public class Player_NewInputSystem : MonoBehaviour
 
     private PlayerInputActions _playerInputActions;
 
+
+
     private void Start()
     {
         _animator = GetComponentInChildren<Animator>();
@@ -28,7 +30,14 @@ public class Player_NewInputSystem : MonoBehaviour
         _playerInputActions.Player.Enable();
         _playerInputActions.Player.Pause.performed += Pause_performed;
     }
-
+    private void OnDestroy()
+    {
+        if (_playerInputActions != null)
+        {
+            _playerInputActions.Player.Pause.performed -= Pause_performed;
+            _playerInputActions.Player.Disable();
+        }
+    }
     private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnPlayerPaused?.Invoke(this, EventArgs.Empty);
