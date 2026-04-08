@@ -35,10 +35,17 @@ public class GameManager : MonoBehaviour
     // Attributs
     private float _startTime;
     public float StartTime => _startTime;
-    private float _offsetTime;
-    private bool _isStarted;
+
+    private float _endTime;
+    public float EndTime { get => _endTime; set => _endTime = value; }
+
     private int _nbCollisions;
     public int NbCollisions => _nbCollisions;
+
+
+    private float _offsetTime;
+    private bool _isStarted;
+  
 
     private float _timeZone1;
     private float _timeZone2;
