@@ -30,12 +30,9 @@ public class UIGame : UI
     }
     private void Start()
     {
-        Time.timeScale = 1.0f; 
-        _pausePanel.SetActive(false);
         CollisionManager.OnCollisionOccured += CollisionManager_OnCollisionOccured;
         Player_NewInputSystem.OnPlayerPaused += Player_NewInputSystem_OnPlayerPaused;
         CollisionDisplayUI();
-
     }
 
 
@@ -57,23 +54,17 @@ public class UIGame : UI
 
     private void TimeDisplayUI()
     {
-        float elapsedTime = Time.time - GameManager.Instance.StartTime;
-       // _txtTime.text = " Temps: " + elapsedTime.ToString("f2");
-        _txtTime.text = $" Temps: {elapsedTime:0.00}";
+        float elapsedTime = 0f;
 
-        /*
-          private void TimeDisplayUI()
+        if (GameManager.Instance.IsStarted)
         {
-            float elapsedTime = Time.time - GameManager.Instance.StartTime;
-
-            int minutes = Mathf.FloorToInt(elapsedTime / 60f);
-            int seconds = Mathf.FloorToInt(elapsedTime % 60f);
-            int centiseconds = Mathf.FloorToInt((elapsedTime * 100) % 100);
-
-            _txtTime.text = $"Temps: {minutes:00}:{seconds:00}.{centiseconds:00}";
+            elapsedTime = Time.time - GameManager.Instance.StartTime;
         }
-         * */
+
+        _txtTime.text = $" Time : {elapsedTime:0.00}";
     }
+
+
     private void CollisionDisplayUI()
     {
         _txtCollisions.text = $" Collisions: {GameManager.Instance.NbCollisions}";
@@ -84,11 +75,7 @@ public class UIGame : UI
     }
 
 
-    public void OnRestartClick()
-    {
-        SceneManager.LoadScene(0);
 
-    }
 
     public void OnContinueClick()
     {
@@ -96,7 +83,30 @@ public class UIGame : UI
 
     }
 
+    public void OnRestartLevelClick()
+    {
+        GameManager.Instance.RestoreLevelState();
+        EventSystem.current.SetSelectedGameObject(null);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (_pausePanel.activeSelf)
+        {
+            Time.timeScale = 0f;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_continueButton.gameObject);
+        }
+    }
 
 }

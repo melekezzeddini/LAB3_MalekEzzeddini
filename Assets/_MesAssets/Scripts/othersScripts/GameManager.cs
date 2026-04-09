@@ -3,8 +3,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Singleton
     public static GameManager Instance;
+
+    private float _levelStartTime;
+    private int _levelStartCollisions;
+    public float LevelStartTime => _levelStartTime;
+    public int LevelStartCollisions => _levelStartCollisions;
 
 
     private void Awake()
@@ -59,17 +63,34 @@ public class GameManager : MonoBehaviour
 
     private bool _isPaused = false;
 
-    void Start()
+    public void Start()
     {
-        
         _offsetTime = 0;
         _isStarted = false;
         _nbCollisions = 0;
-        _startTime= Time.time;
+        _startTime = 0f;
         _isPaused = false;
-        Player_NewInputSystem.OnPlayerPaused += Player_NewInputSystem_OnPlayerPaused;
 
+        _levelStartTime = 0f;
+        _levelStartCollisions = 0;
+
+        Player_NewInputSystem.OnPlayerPaused += Player_NewInputSystem_OnPlayerPaused;
     }
+
+    public void SaveLevelState()
+    {
+        _levelStartTime = Time.time;
+        _levelStartCollisions = _nbCollisions;
+    }
+
+    public void RestoreLevelState()
+    {
+        _startTime = _levelStartTime;
+        _nbCollisions = _levelStartCollisions;
+        _isStarted = true;
+    }
+
+
 
     private void Player_NewInputSystem_OnPlayerPaused(object sender, EventArgs e)
     {
@@ -90,11 +111,11 @@ public class GameManager : MonoBehaviour
 
     public void SetTimer()
     {
-        _offsetTime = Time.time;
+        _startTime = Time.time;
         _isStarted = true;
     }
 
-   
+
     public void AddCollision(int p_value)
     {
         _nbCollisions += p_value;

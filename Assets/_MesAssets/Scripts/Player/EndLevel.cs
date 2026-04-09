@@ -13,6 +13,7 @@ public class EndLevel : MonoBehaviour
 
             if (noScene < SceneManager.sceneCountInBuildSettings - 2)
             {
+                GameManager.Instance.SaveLevelState();
                 SceneManager.LoadScene(noScene + 1);
             }
             else

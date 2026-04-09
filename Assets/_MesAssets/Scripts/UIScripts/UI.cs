@@ -15,7 +15,7 @@ public class UI : MonoBehaviour
 
     public void OnRestartClick()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
-
     }
 }
