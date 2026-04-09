@@ -19,7 +19,8 @@ public class EndLevel : MonoBehaviour
             else
             {
                 collision.gameObject.GetComponent<Player_NewInputSystem>().DisableInputActions();
-                GameManager.Instance.EndTime = Time.time - GameManager.Instance.StartTime;
+              //  GameManager.Instance.EndTime = Time.time - GameManager.Instance.StartTime;
+                GameManager.Instance.EndTime = GameManager.Instance.GetElapsedTime();
                 SceneManager.LoadScene(noScene + 1);
             }
         }

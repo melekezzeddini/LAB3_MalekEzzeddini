@@ -54,13 +54,7 @@ public class UIGame : UI
 
     private void TimeDisplayUI()
     {
-        float elapsedTime = 0f;
-
-        if (GameManager.Instance.IsStarted)
-        {
-            elapsedTime = Time.time - GameManager.Instance.StartTime;
-        }
-
+        float elapsedTime = GameManager.Instance.GetElapsedTime();
         _txtTime.text = $" Time : {elapsedTime:0.00}";
     }
 
@@ -86,9 +80,14 @@ public class UIGame : UI
     public void OnRestartLevelClick()
     {
         GameManager.Instance.RestoreLevelState();
+        CollisionDisplayUI();
+        TimeDisplayUI();
+
         EventSystem.current.SetSelectedGameObject(null);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+
 
     private void OnEnable()
     {

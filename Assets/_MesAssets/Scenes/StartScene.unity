@@ -960,7 +960,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 101124338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5625}
+  m_AnchorMin: {x: 0, y: 0.50609374}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -1692,8 +1692,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 622868686}
   m_HandleRect: {fileID: 622868685}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.43750003
+  m_Value: 0.9999998
+  m_Size: 0.4939062
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1906,8 +1906,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 820, y: 350}
+  m_AnchoredPosition: {x: 0, y: 2.708}
+  m_SizeDelta: {x: 820, y: 395.125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1253524708
 MonoBehaviour:
@@ -2390,8 +2390,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 740, y: 836.049}
+  m_AnchoredPosition: {x: 0, y: -181.721}
+  m_SizeDelta: {x: 740, y: 1119.492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668365543
 MonoBehaviour:
@@ -2414,15 +2414,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "INSTRUCTIONS\r\n\r\nContr\xF4les :\r\n- Fl\xE8ches du clavier pour se
-    d\xE9placer\r\n- Manette : joystick pour bouger\r\n\r\nObjectif :\r\n- Atteindre
+    d\xE9placer\r\n- Manette : joystick pour bouger\r\n\r\nObjectif :\r\n-Sc\xE8ne
+    1 : ramasser la cl\xE9 et atteindre la sortie\n-Sc\xE8ne 2 et Sc\xE8ne 33 : atteindre
     la fin du labyrinthe le plus rapidement possible\r\n\r\nR\xE8gles :\r\n- Chaque
-    collision ajoute du temps\r\n- \xC9viter les obstacles\r\n- Suivre le bon chemin
-    pour gagner\r\n\r\nConseils :\r\n- Prends ton temps au d\xE9but pour \xE9viter
-    les erreurs\r\n- Observe le chemin avant d\u2019avancer\r\n- Reste concentr\xE9
-    pour am\xE9liorer ton temps"
+    collision ajoute du temps\r\n- \xC9viter les obstacles\r\n- Si tu touches un
+    policier, tu reviens \xE0 la position initiale\r\n\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e532367e400807647abd5f559ab57dd8, type: 2}
+  m_sharedMaterial: {fileID: -4113023810102628611, guid: e532367e400807647abd5f559ab57dd8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
