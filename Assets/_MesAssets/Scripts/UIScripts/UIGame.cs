@@ -23,7 +23,7 @@ public class UIGame : UI
         }
         else
         {
-            Debug.LogError("un game object essai de cree un deuxieme UIGame");
+            //Debug.LogError("un game object essai de cree un deuxieme UIGame");
             Destroy(gameObject);
         }
         
