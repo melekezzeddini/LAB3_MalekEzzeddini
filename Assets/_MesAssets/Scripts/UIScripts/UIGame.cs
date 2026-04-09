@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class UIGame : MonoBehaviour
+public class UIGame : UI
 {
     public static UIGame Instance;
     [SerializeField] private TextMeshProUGUI    _txtTime;
@@ -82,15 +82,7 @@ public class UIGame : MonoBehaviour
     {
         CollisionDisplayUI();
     }
-    public void OnExitClick()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif 
 
-    }
 
     public void OnRestartClick()
     {
@@ -100,7 +92,7 @@ public class UIGame : MonoBehaviour
 
     public void OnContinueClick()
     {
-
+        Player_NewInputSystem.TriggerOnPlayerPaused(this);
 
     }
 

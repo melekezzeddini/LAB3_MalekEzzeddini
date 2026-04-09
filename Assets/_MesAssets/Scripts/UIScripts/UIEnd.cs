@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIEnd : MonoBehaviour
+public class UIEnd : UI
 {
 
     [SerializeField] private Button _buttonRestart;
@@ -32,19 +32,7 @@ public class UIEnd : MonoBehaviour
 
     }
 
-    public void OnRestartClick()
-    {
-        SceneManager.LoadScene(0);
+  
 
-    }
-
-    public void OnExitClick()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif 
-
-    }
+  
 }

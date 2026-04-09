@@ -5,6 +5,12 @@ public class Player_NewInputSystem : MonoBehaviour
 
     public static event EventHandler OnPlayerPaused;
 
+    public static void TriggerOnPlayerPaused(object sender )
+    {
+        OnPlayerPaused?.Invoke(sender, EventArgs.Empty);
+
+    }
+
     [SerializeField] private float _playerSpeed = 2000f;
     [SerializeField] private float _playerRotationSpeed = 700f;
     [SerializeField] private float jumpForce = 10f;
